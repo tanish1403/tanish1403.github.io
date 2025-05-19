@@ -10,14 +10,16 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="icon" type="image/x-icon" href="favicon.ico" />
     <style>
       body {
-        font-family: "Inter", sans-serif;
+        font-family: "Fira Code", monospace;
         scroll-behavior: smooth;
+        background-color: #1a1a1a;
+        color: #e0e0e0;
       }
       .section-padding {
         padding: 5rem 1rem;
@@ -36,7 +38,7 @@
       }
       .hover-scale:hover {
         transform: scale(1.03);
-        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 10px 15px rgba(0, 255, 0, 0.2);
       }
       .back-to-top {
         position: fixed;
@@ -51,7 +53,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: #f8fafc;
+        background: #1a1a1a;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -65,7 +67,7 @@
       .spinner {
         width: 40px;
         height: 40px;
-        border: 4px solid #2dd4bf;
+        border: 4px solid #00ff00;
         border-top: 4px solid transparent;
         border-radius: 50%;
         animation: spin 1s linear infinite;
@@ -80,7 +82,7 @@
       }
     </style>
   </head>
-  <body class="bg-gray-50">
+  <body>
     <!-- Loader -->
     <div class="loader" id="loader">
       <div class="spinner"></div>
@@ -88,7 +90,7 @@
 
     <!-- Header -->
     <header
-      class="bg-gradient-to-r from-teal-500 to-blue-600 text-white sticky top-0 z-10 shadow-lg"
+      class="bg-gradient-to-r from-gray-900 to-gray-800 text-green-400 sticky top-0 z-10 shadow-lg"
     >
       <nav
         class="container mx-auto flex justify-between items-center py-4 px-6"
@@ -96,51 +98,53 @@
         <div class="text-2xl font-bold">Tanish Jain</div>
         <ul class="flex space-x-6">
           <li>
-            <a href="#about" class="hover:text-coral-300 transition-colors"
+            <a href="#about" class="hover:text-purple-400 transition-colors"
               >About</a
             >
           </li>
           <li>
-            <a href="#education" class="hover:text-coral-300 transition-colors"
-              >Education</a
-            >
-          </li>
-          <li>
-            <a href="#experience" class="hover:text-coral-300 transition-colors"
+            <a
+              href="#experience"
+              class="hover:text-purple-400 transition-colors"
               >Experience</a
             >
           </li>
           <li>
-            <a href="#research" class="hover:text-coral-300 transition-colors"
+            <a href="#research" class="hover:text-purple-400 transition-colors"
               >Research</a
             >
           </li>
           <li>
-            <a href="#projects" class="hover:text-coral-300 transition-colors"
+            <a href="#projects" class="hover:text-purple-400 transition-colors"
               >Projects</a
             >
           </li>
           <li>
-            <a href="#skills" class="hover:text-coral-300 transition-colors"
+            <a href="#skills" class="hover:text-purple-400 transition-colors"
               >Skills</a
+            >
+          </li>
+          <li>
+            <a href="#education" class="hover:text-purple-400 transition-colors"
+              >Education</a
             >
           </li>
           <li>
             <a
               href="#certifications"
-              class="hover:text-coral-300 transition-colors"
+              class="hover:text-purple-400 transition-colors"
               >Certifications</a
             >
           </li>
           <li>
             <a
               href="#achievements"
-              class="hover:text-coral-300 transition-colors"
+              class="hover:text-purple-400 transition-colors"
               >Achievements</a
             >
           </li>
           <li>
-            <a href="#contact" class="hover:text-coral-300 transition-colors"
+            <a href="#contact" class="hover:text-purple-400 transition-colors"
               >Contact</a
             >
           </li>
@@ -149,119 +153,86 @@
     </header>
 
     <!-- About Section -->
-    <section id="about" class="section-padding bg-white fade-in">
+    <section id="about" class="section-padding bg-gray-800 fade-in">
       <div class="container mx-auto text-center">
-        <h2 class="text-4xl font-bold text-slate-800 mb-6">About Me</h2>
+        <h2 class="text-4xl font-bold text-green-400 mb-6">About Me</h2>
         <img
           src="profile.jpg"
           alt="Tanish Jain"
-          class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-teal-500 object-cover"
+          class="w-40 h-40 rounded-full mx-auto mb-6 border-4 border-green-400 object-cover"
         />
-        <p class="text-lg text-gray-700 max-w-3xl mx-auto">
-          I'm a dedicated M.Tech student at NIT Rourkela, specializing in Signal
-          and Image Processing. My research focuses on advancing computer vision
-          and deep learning, with projects in lightweight object detection and
-          medical image segmentation. I'm driven to create efficient, impactful
-          solutions for real-world challenges. Dive into my work below!
+        <p class="text-lg text-gray-300 max-w-3xl mx-auto">
+          I'm an M.Tech student at NIT Rourkela, diving deep into Signal and
+          Image Processing. My research tackles computer vision and deep
+          learning, with a focus on lightweight object detection and medical
+          image segmentation. Check out my projects and skills to see what I'm
+          coding!
         </p>
       </div>
     </section>
 
-    <!-- Education Section -->
-    <section id="education" class="section-padding bg-gray-100 fade-in">
-      <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-center text-slate-800 mb-8">
-          Education
-        </h2>
-        <div class="max-w-3xl mx-auto space-y-6">
-          <div class="bg-white p-6 rounded-xl shadow-md">
-            <h3 class="text-xl font-semibold text-slate-800">
-              M.Tech in Signal and Image Processing
-            </h3>
-            <p class="text-gray-600">
-              National Institute of Technology, Rourkela | 2024 - Present | GPA:
-              9.53
-            </p>
-          </div>
-          <div class="bg-white p-6 rounded-xl shadow-md">
-            <h3 class="text-xl font-semibold text-slate-800">
-              B.Tech in Electronics and Communications Engineering
-            </h3>
-            <p class="text-gray-600">
-              Assam University, Silchar | 2020 - 2024 | GPA: 8.2
-            </p>
-          </div>
-          <div class="bg-white p-6 rounded-xl shadow-md">
-            <h3 class="text-xl font-semibold text-slate-800">12th Grade</h3>
-            <p class="text-gray-600">
-              J N Vidyalaya, Sriganganagar | 2018 - 2019 | 87.6%
-            </p>
-          </div>
-          <div class="bg-white p-6 rounded-xl shadow-md">
-            <h3 class="text-xl font-semibold text-slate-800">10th Grade</h3>
-            <p class="text-gray-600">
-              J N Vidyalaya, Sriganganagar | 2016 - 2017 | GPA: 9.8
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- Experience Section -->
-    <section id="experience" class="section-padding bg-white fade-in">
+    <section id="experience" class="section-padding bg-gray-900 fade-in">
       <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-center text-slate-800 mb-8">
+        <h2 class="text-4xl font-bold text-center text-green-400 mb-8">
           Experience
         </h2>
         <div class="max-w-3xl mx-auto space-y-6">
-          <div class="bg-gray-50 p-6 rounded-xl shadow-md">
-            <h3 class="text-xl font-semibold text-slate-800">
+          <div
+            class="bg-gray-800 p-6 rounded-xl shadow-md border border-green-500"
+          >
+            <h3 class="text-xl font-semibold text-green-400">
               Freelance Deep Learning Engineer
             </h3>
-            <p class="text-gray-600">Upwork | Nov 2023 - Feb 2024 | Remote</p>
-            <ul class="list-disc list-inside text-gray-600 mt-2">
+            <p class="text-gray-300">Upwork | Nov 2023 - Feb 2024 | Remote</p>
+            <ul class="list-disc list-inside text-gray-300 mt-2">
               <li>
-                Designed deep learning models for tumor classification in
-                digital pathology, achieving high accuracy.
+                Built deep learning models for tumor classification in digital
+                pathology with high accuracy.
               </li>
               <li>
-                Analyzed SVS datasets and proposed novel optimization
-                strategies.
+                Analyzed SVS datasets and proposed optimization strategies.
               </li>
-              <li>Delivered customized, production-ready models to clients.</li>
+              <li>
+                Delivered production-ready models tailored to client needs.
+              </li>
             </ul>
           </div>
-          <div class="bg-gray-50 p-6 rounded-xl shadow-md">
-            <h3 class="text-xl font-semibold text-slate-800">
+          <div
+            class="bg-gray-800 p-6 rounded-xl shadow-md border border-green-500"
+          >
+            <h3 class="text-xl font-semibold text-green-400">
               Data Science Intern
             </h3>
-            <p class="text-gray-600">
+            <p class="text-gray-300">
               Navodita Infotech | Nov 2023 - Dec 2023 | India
             </p>
-            <ul class="list-disc list-inside text-gray-600 mt-2">
+            <ul class="list-disc list-inside text-gray-300 mt-2">
               <li>
                 Developed TensorFlow-based recommender system for e-commerce.
               </li>
-              <li>Enhanced precision by analyzing user behavior patterns.</li>
+              <li>Improved precision by analyzing user behavior patterns.</li>
               <li>
-                Collaborated with design and backend teams for seamless
-                integration.
+                Worked with design and backend teams for smooth integration.
               </li>
             </ul>
           </div>
-          <div class="bg-gray-50 p-6 rounded-xl shadow-md">
-            <h3 class="text-xl font-semibold text-slate-800">
+          <div
+            class="bg-gray-800 p-6 rounded-xl shadow-md border border-green-500"
+          >
+            <h3 class="text-xl font-semibold text-green-400">
               Computer Vision Intern
             </h3>
-            <p class="text-gray-600">
+            <p class="text-gray-300">
               MNIT Jaipur | Jun 2023 - Jul 2023 | Jaipur, India
             </p>
-            <ul class="list-disc list-inside text-gray-600 mt-2">
+            <ul class="list-disc list-inside text-gray-300 mt-2">
               <li>
-                Built YOLOv7-based pipeline for real-time PCB defect detection.
+                Created YOLOv7-based pipeline for real-time PCB defect
+                detection.
               </li>
-              <li>Created a web application for visualization and testing.</li>
-              <li>Collaborated to deliver proof-of-concept on time.</li>
+              <li>Built a web app for visualization and testing.</li>
+              <li>Collaborated to deliver proof-of-concept on schedule.</li>
             </ul>
           </div>
         </div>
@@ -269,54 +240,54 @@
     </section>
 
     <!-- Research Projects Section -->
-    <section id="research" class="section-padding bg-gray-100 fade-in">
+    <section id="research" class="section-padding bg-gray-800 fade-in">
       <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-center text-slate-800 mb-8">
+        <h2 class="text-4xl font-bold text-center text-green-400 mb-8">
           Research Projects
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- Research Project 1 -->
           <div
-            class="bg-white p-6 rounded-xl shadow-lg hover-scale border-l-4 border-teal-500"
+            class="bg-gray-900 p-6 rounded-xl shadow-lg hover-scale border-l-4 border-green-400"
           >
             <span
-              class="inline-block bg-teal-500 text-white text-sm font-semibold px-3 py-1 rounded-full mb-4"
+              class="inline-block bg-green-400 text-gray-900 text-sm font-semibold px-3 py-1 rounded-full mb-4"
               >Research</span
             >
-            <h3 class="text-2xl font-semibold text-slate-800 mb-3">
+            <h3 class="text-2xl font-semibold text-green-400 mb-3">
               Small Object Detection in Aerial Images
             </h3>
-            <p class="text-gray-600 mb-4">
-              Developing a lightweight architecture for oriented bounding box
-              detection in complex aerial scenes (SCCOS dataset). Leverages
-              sparse attention and deformable transformers for real-time
-              maritime monitoring in cluttered environments.
+            <p class="text-gray-300 mb-4">
+              Crafting a lightweight architecture for oriented bounding box
+              detection in complex aerial scenes (SCCOS dataset). Uses sparse
+              attention and deformable transformers for real-time maritime
+              monitoring.
             </p>
             <a
               href="https://github.com/tanish1403"
-              class="inline-block bg-coral-500 text-white px-4 py-2 rounded-lg hover:bg-coral-600 transition-colors"
+              class="inline-block bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors"
               >GitHub (Ongoing)</a
             >
           </div>
           <!-- Research Project 2 -->
           <div
-            class="bg-white p-6 rounded-xl shadow-lg hover-scale border-l-4 border-teal-500"
+            class="bg-gray-900 p-6 rounded-xl shadow-lg hover-scale border-l-4 border-green-400"
           >
             <span
-              class="inline-block bg-teal-500 text-white text-sm font-semibold px-3 py-1 rounded-full mb-4"
+              class="inline-block bg-green-400 text-gray-900 text-sm font-semibold px-3 py-1 rounded-full mb-4"
               >Research</span
             >
-            <h3 class="text-2xl font-semibold text-slate-800 mb-3">
+            <h3 class="text-2xl font-semibold text-green-400 mb-3">
               3D Liver and Tumor Segmentation
             </h3>
-            <p class="text-gray-600 mb-4">
-              Created MFPM-UNET with 3D feature pooling and attention, achieving
-              0.92 Dice Score (liver) and 0.70 (tumor) on LiTS dataset.
-              Presented at CVIP 2024; paper under review.
+            <p class="text-gray-300 mb-4">
+              Developed MFPM-UNET with 3D feature pooling and attention,
+              achieving strong results on LiTS dataset. Presented at CVIP 2024;
+              paper under review.
             </p>
             <a
               href="https://github.com/tanish1403/Liver-Tumor-Segmentation"
-              class="inline-block bg-coral-500 text-white px-4 py-2 rounded-lg hover:bg-coral-600 transition-colors"
+              class="inline-block bg-purple-500 text-white px-4 py-2 rounded-lg hover:bg-purple-600 transition-colors"
               >GitHub</a
             >
           </div>
@@ -325,69 +296,77 @@
     </section>
 
     <!-- Other Projects Section -->
-    <section id="projects" class="section-padding bg-white fade-in">
+    <section id="projects" class="section-padding bg-gray-900 fade-in">
       <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-center text-slate-800 mb-8">
+        <h2 class="text-4xl font-bold text-center text-green-400 mb-8">
           Other Projects
         </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- NeuralFlow -->
-          <div class="bg-gray-50 p-6 rounded-xl shadow-md hover-scale">
-            <h3 class="text-xl font-semibold text-slate-800 mb-3">
+          <div
+            class="bg-gray-800 p-6 rounded-xl shadow-md hover-scale border border-green-500"
+          >
+            <h3 class="text-xl font-semibold text-green-400 mb-3">
               NeuralFlow
             </h3>
-            <p class="text-gray-600 mb-4">
-              A no-code/low-code platform for designing deep learning pipelines
-              with visual blocks and GenAI-based code suggestions.
+            <p class="text-gray-300 mb-4">
+              A no-code/low-code platform for building deep learning pipelines
+              with visual blocks and GenAI-driven code suggestions.
             </p>
             <a
               href="https://github.com/tanish1403/neuralflow-poc"
-              class="text-teal-500 hover:text-teal-600 transition-colors"
+              class="text-purple-400 hover:text-purple-500 transition-colors"
               >GitHub</a
             >
           </div>
           <!-- Conversational Fashion GenAI -->
-          <div class="bg-gray-50 p-6 rounded-xl shadow-md hover-scale">
-            <h3 class="text-xl font-semibold text-slate-800 mb-3">
+          <div
+            class="bg-gray-800 p-6 rounded-xl shadow-md hover-scale border border-green-500"
+          >
+            <h3 class="text-xl font-semibold text-green-400 mb-3">
               Conversational Fashion GenAI
             </h3>
-            <p class="text-gray-600 mb-4">
-              A chatbot leveraging LLMs for trend-aware fashion recommendations,
-              using web-scraped social media data.
+            <p class="text-gray-300 mb-4">
+              A chatbot using LLMs for trend-aware fashion recommendations,
+              powered by web-scraped social media data.
             </p>
             <a
               href="https://github.com/tanish1403/fashionAIChatbot"
-              class="text-teal-500 hover:text-teal-600 transition-colors"
+              class="text-purple-400 hover:text-purple-500 transition-colors"
               >GitHub</a
             >
           </div>
           <!-- Face Recognition Attendance -->
-          <div class="bg-gray-50 p-6 rounded-xl shadow-md hover-scale">
-            <h3 class="text-xl font-semibold text-slate-800 mb-3">
+          <div
+            class="bg-gray-800 p-6 rounded-xl shadow-md hover-scale border border-green-500"
+          >
+            <h3 class="text-xl font-semibold text-green-400 mb-3">
               Face Recognition Attendance System
             </h3>
-            <p class="text-gray-600 mb-4">
+            <p class="text-gray-300 mb-4">
               An attendance system using face embeddings from a fine-tuned
               FaceNet model.
             </p>
             <a
               href="https://github.com/tanish1403/Attendance-System"
-              class="text-teal-500 hover:text-teal-600 transition-colors"
+              class="text-purple-400 hover:text-purple-500 transition-colors"
               >GitHub</a
             >
           </div>
           <!-- LLM Query Engine -->
-          <div class="bg-gray-50 p-6 rounded-xl shadow-md hover-scale">
-            <h3 class="text-xl font-semibold text-slate-800 mb-3">
+          <div
+            class="bg-gray-800 p-6 rounded-xl shadow-md hover-scale border border-green-500"
+          >
+            <h3 class="text-xl font-semibold text-green-400 mb-3">
               LLM Query Engine
             </h3>
-            <p class="text-gray-600 mb-4">
+            <p class="text-gray-300 mb-4">
               A Streamlit interface for querying CSV files using OpenAI
               embeddings and Langchain.
             </p>
             <a
               href="https://github.com/tanish1403/LLM-Query-Engine"
-              class="text-teal-500 hover:text-teal-600 transition-colors"
+              class="text-purple-400 hover:text-purple-500 transition-colors"
               >GitHub</a
             >
           </div>
@@ -396,58 +375,113 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="section-padding bg-gray-100 fade-in">
+    <section id="skills" class="section-padding bg-gray-800 fade-in">
       <div class="container mx-auto">
-        <h2 class="text-4xl font-bold text-center text-slate-800 mb-8">
+        <h2 class="text-4xl font-bold text-center text-green-400 mb-8">
           Technical Skills
         </h2>
         <div
           class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto"
         >
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <h3 class="text-lg font-semibold text-slate-800 mb-2">Languages</h3>
-            <p class="text-gray-600">Python, C/C++, SQL</p>
+          <div
+            class="bg-gray-900 p-4 rounded-lg shadow-md border border-green-500"
+          >
+            <h3 class="text-lg font-semibold text-green-400 mb-2">Languages</h3>
+            <p class="text-gray-300">Python, C/C++, SQL</p>
           </div>
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <h3 class="text-lg font-semibold text-slate-800 mb-2">
+          <div
+            class="bg-gray-900 p-4 rounded-lg shadow-md border border-green-500"
+          >
+            <h3 class="text-lg font-semibold text-green-400 mb-2">
               ML Frameworks
             </h3>
-            <p class="text-gray-600">PyTorch, TensorFlow, Scikit-learn, ONNX</p>
+            <p class="text-gray-300">PyTorch, TensorFlow, Scikit-learn, ONNX</p>
           </div>
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <h3 class="text-lg font-semibold text-slate-800 mb-2">Tools</h3>
-            <p class="text-gray-600">
+          <div
+            class="bg-gray-900 p-4 rounded-lg shadow-md border border-green-500"
+          >
+            <h3 class="text-lg font-semibold text-green-400 mb-2">Tools</h3>
+            <p class="text-gray-300">
               Git, Docker, Streamlit, FastAPI, GitHub Actions, CI/CD
             </p>
           </div>
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <h3 class="text-lg font-semibold text-slate-800 mb-2">
+          <div
+            class="bg-gray-900 p-4 rounded-lg shadow-md border border-green-500"
+          >
+            <h3 class="text-lg font-semibold text-green-400 mb-2">
               Data Analysis
             </h3>
-            <p class="text-gray-600">pandas, matplotlib, seaborn</p>
+            <p class="text-gray-300">pandas, matplotlib, seaborn</p>
           </div>
-          <div class="bg-white p-4 rounded-lg shadow-md">
-            <h3 class="text-lg font-semibold text-slate-800 mb-2">
+          <div
+            class="bg-gray-900 p-4 rounded-lg shadow-md border border-green-500"
+          >
+            <h3 class="text-lg font-semibold text-green-400 mb-2">
               Operating Systems
             </h3>
-            <p class="text-gray-600">Ubuntu/Linux</p>
+            <p class="text-gray-300">Ubuntu/Linux</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section-padding bg-gray-900 fade-in">
+      <div class="container mx-auto">
+        <h2 class="text-4xl font-bold text-center text-green-400 mb-8">
+          Education
+        </h2>
+        <div class="max-w-3xl mx-auto space-y-6">
+          <div
+            class="bg-gray-800 p-6 rounded-xl shadow-md border border-green-500"
+          >
+            <h3 class="text-xl font-semibold text-green-400">
+              M.Tech in Signal and Image Processing
+            </h3>
+            <p class="text-gray-300">
+              National Institute of Technology, Rourkela | 2024 - Present
+            </p>
+          </div>
+          <div
+            class="bg-gray-800 p-6 rounded-xl shadow-md border border-green-500"
+          >
+            <h3 class="text-xl font-semibold text-green-400">
+              B.Tech in Electronics and Communications Engineering
+            </h3>
+            <p class="text-gray-300">Assam University, Silchar | 2020 - 2024</p>
+          </div>
+          <div
+            class="bg-gray-800 p-6 rounded-xl shadow-md border border-green-500"
+          >
+            <h3 class="text-xl font-semibold text-green-400">12th Grade</h3>
+            <p class="text-gray-300">
+              J N Vidyalaya, Sriganganagar | 2018 - 2019
+            </p>
+          </div>
+          <div
+            class="bg-gray-800 p-6 rounded-xl shadow-md border border-green-500"
+          >
+            <h3 class="text-xl font-semibold text-green-400">10th Grade</h3>
+            <p class="text-gray-300">
+              J N Vidyalaya, Sriganganagar | 2016 - 2017
+            </p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Certifications Section -->
-    <section id="certifications" class="section-padding bg-white fade-in">
+    <section id="certifications" class="section-padding bg-gray-800 fade-in">
       <div class="container mx-auto text-center">
-        <h2 class="text-4xl font-bold text-slate-800 mb-8">Certifications</h2>
-        <ul class="list-none max-w-2xl mx-auto text-lg text-gray-600 space-y-2">
-          <li class="bg-gray-50 p-3 rounded-lg">
+        <h2 class="text-4xl font-bold text-green-400 mb-8">Certifications</h2>
+        <ul class="list-none max-w-2xl mx-auto text-lg text-gray-300 space-y-2">
+          <li class="bg-gray-900 p-3 rounded-lg border border-green-500">
             IBM Data Science Certification - Coursera, 2023
           </li>
-          <li class="bg-gray-50 p-3 rounded-lg">
+          <li class="bg-gray-900 p-3 rounded-lg border border-green-500">
             Deep Learning Specialization - Coursera, 2023
           </li>
-          <li class="bg-gray-50 p-3 rounded-lg">
+          <li class="bg-gray-900 p-3 rounded-lg border border-green-500">
             Programming Technology - NIELIT Silchar, 2023
           </li>
         </ul>
@@ -455,14 +489,14 @@
     </section>
 
     <!-- Achievements Section -->
-    <section id="achievements" class="section-padding bg-gray-100 fade-in">
+    <section id="achievements" class="section-padding bg-gray-900 fade-in">
       <div class="container mx-auto text-center">
-        <h2 class="text-4xl font-bold text-slate-800 mb-8">Achievements</h2>
-        <ul class="list-none max-w-2xl mx-auto text-lg text-gray-600 space-y-2">
-          <li class="bg-white p-3 rounded-lg">
+        <h2 class="text-4xl font-bold text-green-400 mb-8">Achievements</h2>
+        <ul class="list-none max-w-2xl mx-auto text-lg text-gray-300 space-y-2">
+          <li class="bg-gray-800 p-3 rounded-lg border border-green-500">
             Flipkart Grid 5.0 Finalist, 2023
           </li>
-          <li class="bg-white p-3 rounded-lg">
+          <li class="bg-gray-800 p-3 rounded-lg border border-green-500">
             Smart India Hackathon Grand Finalist, 2022
           </li>
         </ul>
@@ -472,30 +506,30 @@
     <!-- Contact Section -->
     <section
       id="contact"
-      class="section-padding bg-gradient-to-r from-teal-500 to-blue-600 text-white fade-in"
+      class="section-padding bg-gradient-to-r from-gray-900 to-gray-800 text-green-400 fade-in"
     >
       <div class="container mx-auto text-center">
         <h2 class="text-4xl font-bold mb-6">Get in Touch</h2>
-        <p class="text-lg mb-6 max-w-2xl mx-auto">
-          Excited to collaborate or discuss my research? Reach out via email,
+        <p class="text-lg text-gray-300 mb-6 max-w-2xl mx-auto">
+          Want to collab or chat about my research? Hit me up via email,
           LinkedIn, or GitHub!
         </p>
         <div class="flex justify-center space-x-8">
           <a
             href="mailto:tanish.jain140301@gmail.com"
-            class="text-white hover:text-coral-300 transition-colors"
+            class="text-green-400 hover:text-purple-400 transition-colors"
           >
             <i class="fas fa-envelope fa-2x"></i>
           </a>
           <a
             href="https://linkedin.com/in/tanish-jain-72332alb2"
-            class="text-white hover:text-coral-300 transition-colors"
+            class="text-green-400 hover:text-purple-400 transition-colors"
           >
             <i class="fab fa-linkedin fa-2x"></i>
           </a>
           <a
             href="https://github.com/tanish1403"
-            class="text-white hover:text-coral-300 transition-colors"
+            class="text-green-400 hover:text-purple-400 transition-colors"
           >
             <i class="fab fa-github fa-2x"></i>
           </a>
@@ -505,15 +539,15 @@
 
     <!-- Footer -->
     <footer
-      class="bg-gradient-to-r from-slate-800 to-slate-900 text-white text-center py-6"
+      class="bg-gradient-to-r from-gray-900 to-gray-800 text-gray-300 text-center py-6"
     >
-      <p>© 2025 Tanish Jain. Crafted with passion.</p>
+      <p>© 2025 Tanish Jain. Coded with grit.</p>
     </footer>
 
     <!-- Back to Top Button -->
     <button
       id="back-to-top"
-      class="back-to-top bg-coral-500 text-white p-3 rounded-full shadow-lg hover:bg-coral-600 transition-colors"
+      class="back-to-top bg-purple-500 text-white p-3 rounded-full shadow-lg hover:bg-purple-600 transition-colors"
     >
       <i class="fas fa-arrow-up"></i>
     </button>
