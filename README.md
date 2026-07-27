@@ -1,6 +1,6 @@
 # Tanish Jain — Personal Portfolio
 
-A clean, professional portfolio website built with **Vite + React + TypeScript + Tailwind CSS**, deployable for free on GitHub Pages.
+A clean, professional, recruiter-friendly portfolio website built with **pure HTML + CSS + Vanilla JavaScript** — zero build step, zero dependencies, deployable anywhere for free.
 
 ## ✨ Features
 
@@ -8,91 +8,96 @@ A clean, professional portfolio website built with **Vite + React + TypeScript +
 - Light / dark mode (persisted in `localStorage`)
 - Fully responsive — mobile-first
 - Fade-in-on-scroll micro-animations
-- All content in a single `src/data.ts` file — edit once, updates everywhere
-- Optimised for SEO with Open Graph meta tags
+- Project detail modal with image gallery and metrics
+- Category-filtered projects and skills grid
+- Certifications section
+- All content editable in `script.js` (data arrays at the top)
 
 ---
 
 ## 🚀 Running Locally
 
-```bash
-# 1. Install dependencies
-npm install
-
-# 2. Start the dev server
-npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173) in your browser.
-
----
-
-## 🏗️ Building for Production
+No build step needed — just open `index.html` in a browser, or serve it with any static server:
 
 ```bash
-npm run build
-```
+# Option 1: Python (built into most systems)
+python -m http.server 8080
+# → http://localhost:8080
 
-The output goes to `dist/`. Preview it locally with:
+# Option 2: Node.js npx serve
+npx serve .
+# → http://localhost:3000
 
-```bash
-npm run preview
+# Option 3: VS Code Live Server extension
+# Right-click index.html → "Open with Live Server"
 ```
 
 ---
 
 ## 📦 Deploying to GitHub Pages
 
-### Method 1 — GitHub Actions (Recommended)
+### Method 1 — GitHub Actions (Recommended, automatic on push to `main`)
 
 1. Push the project to a GitHub repository.
 2. Go to **Settings → Pages**.
 3. Under **Source**, select **GitHub Actions**.
-4. Push to `main` — the workflow at `.github/workflows/deploy.yml` will automatically build and deploy.
+4. Push to `main` — the workflow at `.github/workflows/deploy.yml` will automatically deploy the site.
 
-> **Important:** Update the `base` value in `vite.config.ts` to match your repo name:
-> ```ts
-> base: '/YOUR-REPO-NAME/',
-> ```
+> The workflow deploys the **repo root** directly — no build needed.
 
-### Method 2 — Manual with `gh-pages` npm package
+### Method 2 — Manual Deploy from Branch
 
-```bash
-npm run deploy
-```
-
-This runs `npm run build && gh-pages -d dist`, pushing the built site to the `gh-pages` branch. Then in GitHub → Settings → Pages, set source to **Deploy from a branch** and choose `gh-pages`.
+1. Go to **Settings → Pages**.
+2. Under **Source**, choose **Deploy from a branch**.
+3. Select **main** branch, **/ (root)** folder.
+4. Click Save — GitHub Pages will serve your site automatically.
 
 ---
 
 ## 📝 Customising Content
 
-All site content lives in **`src/data.ts`**. Edit the exported objects to update:
+All content lives in the **data arrays at the top of `script.js`**:
 
-| Object | What it controls |
+| Array | What it controls |
 |---|---|
-| `personal` | Name, title, tagline, bio, social links |
-| `experience` | Work history cards |
-| `projects` | Project grid + compact list |
-| `publications` | Citation list |
-| `awards` | Achievement cards |
-| `skillGroups` | Skills badge grid |
+| `PROJECTS` | Project cards, modal details, metrics, tech stack |
+| `PUBLICATIONS` | Research paper citations |
+| `AWARDS` | Achievement cards |
+| `SKILLS` | Skill badge groups |
+| `CERTS` | Certification cards |
 
-No JSX changes needed — just update the data and rebuild.
+Edit values there — no build, no JSX, changes take effect immediately on refresh.
+
+---
+
+## 🖼️ Adding Project Images
+
+Place project screenshots in:
+```
+projects/
+  ship-detection/cover.png
+  liver-segmentation/cover.png, FlowDiagram.png, ...
+  neuralflow/NF1.png, NF2.png, NF3.png, cover.png
+  android-camera-isp/ISP_1.png, ISP_2.png
+  face-attendance/FR1.png
+  heart-disease/HD_1.png, output.png
+  query-engine/demo.jpg
+```
+
+Image paths in `script.js` already point to `projects/<folder>/<file>`.
 
 ---
 
 ## 📄 Adding Your Resume
 
-Place your resume PDF at `public/resume.pdf`. The "Download Résumé" button in the hero is pre-linked to `/portfolio/resume.pdf` (update the path in `personal.resumePdf` in `data.ts` if you change the repo name).
+Place your resume PDF at **`resume.pdf`** in the root. The "Download Résumé" button links to it.
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Vite** — build tool
-- **React 18** — UI framework
-- **TypeScript** — type safety
-- **Tailwind CSS v3** — utility-first styling
-- **react-icons** — icon library
-- **gh-pages** — manual deployment fallback
+- **HTML5** — semantic structure, accessibility
+- **CSS** — custom properties (CSS vars), dark mode, responsive grid
+- **Vanilla JavaScript** — dynamic rendering, modal system, filters
+- **Font Awesome** — icons
+- **Google Fonts** — Inter typeface
