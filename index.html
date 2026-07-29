@@ -17,11 +17,15 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased transition-colors duration-300">
+<body class="text-slate-100 font-sans antialiased transition-colors duration-300">
 
-  <!-- Background Ambient Glow & Grid -->
+  <!-- Background Ambient Glow & Interactive Neural Canvas -->
   <div class="background-ambient" aria-hidden="true">
-    <div class="radial-glow"></div>
+    <canvas id="neural-canvas" class="neural-canvas"></canvas>
+    <div class="radial-glow glow-1"></div>
+    <div class="radial-glow glow-2"></div>
+    <div class="radial-glow glow-3"></div>
+    <div class="radial-glow glow-4"></div>
     <div class="svg-grid"></div>
   </div>
 
@@ -56,10 +60,6 @@
     <section id="hero" class="hero-section">
       <div class="container hero-container">
         <div class="hero-content">
-          <div class="status-badge">
-            <span class="pulse-dot"></span>
-            <span>Available for full-time roles & research collaborations</span>
-          </div>
           
           <h1 class="hero-name">Tanish Jain</h1>
           <h2 class="hero-title">Machine Learning Engineer | Computer Vision & Deep Learning Research</h2>
@@ -142,7 +142,7 @@
       <div class="container">
         <div class="section-header">
           <span class="section-subtitle">Experience</span>
-          <h2 class="section-title">Where I've worked</h2>
+          <h2 class="section-title">Where I've Worked</h2>
         </div>
 
         <div class="timeline">
@@ -350,7 +350,7 @@
         </div>
 
         <footer class="footer-text">
-          <p>© 2026 Tanish Jain. Built with pure HTML, CSS, & Vanilla JS.</p>
+          <p>© 2026 Tanish Jain. All rights reserved.</p>
         </footer>
       </div>
     </section>
@@ -363,18 +363,39 @@
         <i class="fa-solid fa-xmark"></i>
       </button>
 
-      <div id="modal-hero-wrapper" class="modal-hero-wrapper">
-        <img id="modal-hero-img" src="" alt="" class="modal-hero-img" />
-        <div class="modal-hero-overlay"></div>
-        <div class="modal-hero-info">
-          <div class="modal-badges" id="modal-hero-badges"></div>
-          <h2 class="modal-hero-title" id="modal-hero-title"></h2>
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <div class="modal-badges" id="modal-header-badges"></div>
+        <h2 class="modal-title" id="modal-title"></h2>
+      </div>
+
+      <!-- Project Photo Gallery Container -->
+      <div class="project-gallery-wrapper" id="modal-gallery-wrapper">
+        <div class="gallery-main-stage">
+          <button class="gallery-nav-btn prev" id="gallery-prev-btn" aria-label="Previous photo">
+            <i class="fa-solid fa-chevron-left"></i>
+          </button>
+          
+          <img id="gallery-main-img" src="" alt="" class="gallery-main-img" />
+          
+          <button class="gallery-nav-btn next" id="gallery-next-btn" aria-label="Next photo">
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+
+          <div class="gallery-stage-bar">
+            <span class="gallery-counter" id="gallery-counter">
+              <i class="fa-solid fa-images"></i> <span id="gallery-curr-num">1</span> / <span id="gallery-total-num">1</span>
+            </span>
+            <button class="gallery-expand-btn" id="gallery-expand-btn" title="View Fullscreen">
+              <i class="fa-solid fa-expand"></i> Expand
+            </button>
+          </div>
         </div>
-        <div id="modal-thumbs" class="modal-thumbs"></div>
+
+        <div class="gallery-thumbs-container" id="gallery-thumbs"></div>
       </div>
 
       <div class="modal-body">
-        <div id="modal-no-img-header" class="modal-no-img-header"></div>
         <div id="modal-metrics" class="modal-metrics-grid"></div>
         <p id="modal-description" class="modal-desc"></p>
         
@@ -398,6 +419,26 @@
     </div>
   </div>
 
-  <script src="script.js"></script>
+  <!-- LIGHTBOX MODAL (FULLSCREEN PHOTO VIEWER) -->
+  <div class="lightbox-backdrop" id="lightbox-modal" aria-hidden="true">
+    <button class="lightbox-close" id="lightbox-close-btn" aria-label="Close Lightbox">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    
+    <button class="lightbox-nav prev" id="lightbox-prev-btn" aria-label="Previous Image">
+      <i class="fa-solid fa-chevron-left"></i>
+    </button>
+
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Expanded View" class="lightbox-img" />
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <button class="lightbox-nav next" id="lightbox-next-btn" aria-label="Next Image">
+      <i class="fa-solid fa-chevron-right"></i>
+    </button>
+  </div>
+
+  <script src="script.js?v=5"></script>
 </body>
 </html>

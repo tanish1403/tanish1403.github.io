@@ -74,17 +74,22 @@ Edit values there — no build, no JSX, changes take effect immediately on refre
 
 Place project screenshots in:
 ```
-projects/
-  ship-detection/cover.png
-  liver-segmentation/cover.png, FlowDiagram.png, ...
-  neuralflow/NF1.png, NF2.png, NF3.png, cover.png
-  android-camera-isp/ISP_1.png, ISP_2.png
-  face-attendance/FR1.png
-  heart-disease/HD_1.png, output.png
-  query-engine/demo.jpg
+public/
+  projects/
+    ship-detection/cover.png, SCCOS.png, 6a13d38d-be4a-44ed-9300-bbebaefc3a5d.png, af417654-c086-45c8-aa49-c8b1dd72aa96_page-0001.jpg
+    liver-segmentation/cover.png, FlowDiagram.png, ...
+    neuralflow/NF1.png, NF2.png, NF3.png, cover.png
+    android-camera-isp/ISP_1.png, ISP_2.png
+    face-attendance/FR1.png, FR2.png, FR3.png
+    heart-disease/HD_1.png, output.png
+    query-engine/demo.jpg
+  profile.jpg      ← already present
+  resume.pdf       ← already present
 ```
 
-Image paths in `script.js` already point to `projects/<folder>/<file>`.
+Image paths in `script.js` already point to `public/projects/<folder>/<file>`.
+These are served directly by GitHub Pages since `public/` is just a regular folder in the repo root.
+
 
 ---
 
