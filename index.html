@@ -1,444 +1,429 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tanish Jain — Machine Learning Engineer | Computer Vision & Deep Learning</title>
-  <meta name="description" content="Portfolio of Tanish Jain - Machine Learning Engineer specializing in Computer Vision, Medical Imaging, and Deep Learning Research." />
-  
-  <!-- Google Fonts: Inter -->
+  <title>Tanish Jain — Machine Learning Engineer, Computer Vision</title>
+  <meta name="description" content="Tanish Jain — computer vision and AI engineer building end-to-end deep learning systems: lightweight satellite object detection, 3D CT segmentation, and multimodal quality-check pipelines." />
+  <meta name="theme-color" content="#F1F1EC" />
+  <meta property="og:title" content="Tanish Jain — Machine Learning Engineer, Computer Vision" />
+  <meta property="og:description" content="Lightweight satellite object detection, 3D CT segmentation, and multimodal quality-check pipelines." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="public/projects/ship-detection/af417654-c086-45c8-aa49-c8b1dd72aa96_page-0001.jpg" />
+
+  <script>
+    // Set the theme before first paint so there is no flash.
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        var system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        document.documentElement.dataset.theme = saved || system;
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="icon" href="public/favicon.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  
-  <!-- FontAwesome Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  
-  <!-- Custom Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Sans:ital,wght@0,400..700;1,400..600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body class="text-slate-100 font-sans antialiased transition-colors duration-300">
+<body>
 
-  <!-- Background Ambient Glow & Interactive Neural Canvas -->
-  <div class="background-ambient" aria-hidden="true">
-    <canvas id="neural-canvas" class="neural-canvas"></canvas>
-    <div class="radial-glow glow-1"></div>
-    <div class="radial-glow glow-2"></div>
-    <div class="radial-glow glow-3"></div>
-    <div class="radial-glow glow-4"></div>
-    <div class="svg-grid"></div>
-  </div>
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" /></symbol>
+    <symbol id="i-arrow-ne" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9" /></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" /></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" /></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" /></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" /></symbol>
+    <symbol id="i-expand" viewBox="0 0 24 24"><path d="M9 4H4v5M15 4h5v5M15 20h5v-5M9 20H4v-5" /></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="1.5" /><path d="M15 5.5A1.5 1.5 0 0 0 13.5 4h-8A1.5 1.5 0 0 0 4 5.5v8A1.5 1.5 0 0 0 5.5 15" /></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5 9.5 18 20 6.5" /></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M12 .5C5.73.5.5 5.73.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.55v-1.94c-3.2.7-3.88-1.54-3.88-1.54-.53-1.34-1.29-1.7-1.29-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.7 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.81 1.19 1.84 1.19 3.1 0 4.43-2.7 5.4-5.26 5.69.41.35.78 1.05.78 2.12v3.14c0 .3.21.66.8.55A11.5 11.5 0 0 0 23.5 12C23.5 5.73 18.27.5 12 .5Z" /></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path fill="currentColor" stroke="none" d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.13 1.45-2.13 2.94v5.67H9.37V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.26 2.37 4.26 5.45v6.29ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.72v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.72C24 .77 23.2 0 22.22 0Z" /></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3.5 7 8.5 6 8.5-6" /></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2" /><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.2 5.2l1.4 1.4M17.4 17.4l1.4 1.4M18.8 5.2l-1.4 1.4M6.6 17.4l-1.4 1.4" /></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z" /></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10.5 12 15l5-4.5M4 20h16" /></symbol>
+  </svg>
 
-  <!-- Navigation Bar -->
-  <nav class="navbar" id="navbar">
-    <div class="container nav-container">
-      <a href="#hero" class="nav-logo">TJ<span class="dot">.</span></a>
-      
-      <div class="nav-links" id="nav-links">
-        <a href="#about" class="nav-link">About</a>
+  <a class="skip" href="#work">Skip to work</a>
+
+  <header class="site-head" id="site-head">
+    <div class="head-inner">
+      <a class="wordmark" href="#top" aria-label="Tanish Jain — back to top">
+        Tanish Jain<span class="wordmark-mark">*</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Sections">
+        <a href="#work" class="nav-link">Work</a>
+        <a href="#research" class="nav-link">Research</a>
         <a href="#experience" class="nav-link">Experience</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#publications" class="nav-link">Publications</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#certifications" class="nav-link">Certifications</a>
+        <a href="#toolkit" class="nav-link">Toolkit</a>
         <a href="#contact" class="nav-link">Contact</a>
-      </div>
+      </nav>
 
-      <div class="nav-actions">
-        <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle dark/light theme">
-          <i class="fa-solid fa-moon" id="theme-icon"></i>
+      <div class="head-actions">
+        <button class="icon-btn theme-btn" id="theme-toggle" type="button" aria-label="Switch theme" aria-pressed="false">
+          <svg class="icon icon-sun"><use href="#i-sun" /></svg>
+          <svg class="icon icon-moon"><use href="#i-moon" /></svg>
         </button>
-        <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle Navigation Menu">
-          <i class="fa-solid fa-bars"></i>
+        <a class="btn btn-ghost btn-sm head-resume" href="resume.pdf" download>
+          <span>Résumé</span>
+          <svg class="icon"><use href="#i-download" /></svg>
+        </a>
+        <button class="icon-btn menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+          <span class="menu-glyph"><i></i><i></i></span>
         </button>
       </div>
     </div>
-  </nav>
+  </header>
 
-  <main>
-    <!-- HERO SECTION -->
-    <section id="hero" class="hero-section">
-      <div class="container hero-container">
-        <div class="hero-content">
-          
-          <h1 class="hero-name">Tanish Jain</h1>
-          <h2 class="hero-title">Machine Learning Engineer | Computer Vision & Deep Learning Research</h2>
-          <p class="hero-tagline">Computer Vision and Deep Learning researcher specializing in object detection, medical image analysis, and scene understanding.</p>
-          
-          <div class="hero-actions">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a href="resume.pdf" download class="btn btn-secondary">
-              <i class="fa-solid fa-download"></i> Download Résumé
+  <main id="top">
+
+    <!-- ── HERO ─────────────────────────────────────────── -->
+    <section class="hero" aria-labelledby="hero-name">
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <p class="hero-role reveal-in" style="--d: .05s">Computer vision &amp; AI engineer · M.Tech, NIT Rourkela</p>
+
+          <h1 class="hero-name" id="hero-name">
+            <span class="mask"><span class="mask-inner" style="--d: .1s">Tanish</span></span>
+            <span class="mask"><span class="mask-inner" style="--d: .2s">Jain</span></span>
+          </h1>
+
+          <p class="hero-lede reveal-in" style="--d: .38s">
+            I build end-to-end vision systems — lightweight detectors for degraded
+            satellite imagery, 3D segmentation of CT volumes, and multimodal
+            quality checks for synthetic training data.
+          </p>
+
+          <div class="hero-actions reveal-in" style="--d: .46s">
+            <a class="btn btn-solid" href="#work">
+              <span>See selected work</span>
+              <svg class="icon"><use href="#i-arrow" /></svg>
+            </a>
+            <a class="btn btn-line" href="resume.pdf" download>
+              <span>Résumé</span>
+              <svg class="icon"><use href="#i-download" /></svg>
             </a>
           </div>
 
-          <div class="social-links">
-            <a href="https://github.com/tanish1403" target="_blank" rel="noopener noreferrer" class="social-link">
-              <i class="fa-brands fa-github"></i> <span>GitHub</span>
-            </a>
-            <a href="https://www.linkedin.com/in/tanish-jain-72332a1b2/" target="_blank" rel="noopener noreferrer" class="social-link">
-              <i class="fa-brands fa-linkedin"></i> <span>LinkedIn</span>
-            </a>
-            <a href="mailto:tanish.jain140301@gmail.com" class="social-link">
-              <i class="fa-solid fa-envelope"></i> <span>tanish.jain140301@gmail.com</span>
-            </a>
-          </div>
+          <ul class="hero-links reveal-in" style="--d: .54s">
+            <li><a href="https://github.com/tanish1403" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-github" /></svg>GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/tanish-jain-72332a1b2/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-linkedin" /></svg>LinkedIn</a></li>
+            <li><a href="mailto:tanish.jain140301@gmail.com"><svg class="icon"><use href="#i-mail" /></svg>Email</a></li>
+          </ul>
         </div>
 
-        <div class="hero-avatar-wrapper">
-          <div class="avatar-glow"></div>
-          <div class="avatar-frame">
-            <img src="profile.jpg" alt="Tanish Jain" class="avatar-img" />
+        <figure class="plate reveal-in" id="hero-plate" style="--d: .24s">
+          <div class="plate-media">
+            <img src="profile.jpg" alt="Portrait of Tanish Jain" width="1024" height="1023" />
+            <span class="reg-mark tl"></span>
+            <span class="reg-mark tr"></span>
+            <span class="reg-mark bl"></span>
+            <span class="reg-mark br"></span>
+
+            <div class="bbox">
+              <span class="bbox-label">person · tanish_jain <b>0.99</b></span>
+            </div>
+
+            <div class="plate-cross" id="plate-cross" aria-hidden="true">
+              <span class="cross-x"></span>
+              <span class="cross-y"></span>
+            </div>
+
+            <div class="plate-readout" id="plate-readout" aria-hidden="true">
+              <span>x <b id="rd-x">000</b></span>
+              <span>y <b id="rd-y">000</b></span>
+              <span class="rd-mode">infer</span>
+            </div>
+          </div>
+          <figcaption>
+            Fig. 01 — Tanish Jain, NIT Rourkela.
+            <span class="fig-meta">frame 1 / 1 · 1024 px</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <dl class="hero-stats reveal-in" style="--d: .62s">
+        <div>
+          <dt>Papers</dt>
+          <dd>05<span class="stat-note">2 first-author</span></dd>
+        </div>
+        <div>
+          <dt>Liver Dice</dt>
+          <dd>0.92<span class="stat-note">CVIP 2024</span></dd>
+        </div>
+        <div>
+          <dt>SCCOS AP<sub>50</sub></dt>
+          <dd>0.782<span class="stat-note">GeoStatNet</span></dd>
+        </div>
+        <div>
+          <dt>M.Tech GPA</dt>
+          <dd>9.7<span class="stat-note">out of 10</span></dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- ── PROFILE ──────────────────────────────────────── -->
+    <section class="section" id="profile" aria-labelledby="profile-title">
+      <div class="wrap section-grid">
+        <div class="rail">
+          <span class="rail-num">01</span>
+          <h2 class="rail-title" id="profile-title">Profile</h2>
+          <p class="rail-note">Computer vision and AI engineer — detection models, 3D medical segmentation, multimodal pipelines.</p>
+        </div>
+
+        <div class="section-body">
+          <p class="lead">
+            Computer vision and AI engineer building end-to-end deep learning systems
+            and research-driven vision models — for images that don't cooperate.
+          </p>
+
+          <div class="profile-cols">
+            <div class="prose">
+              <p>
+                M.Tech in Signal and Image Processing at NIT Rourkela (Aug 2024 – Jun 2026,
+                GPA 9.7/10), after a B.Tech in Electronics and Communications Engineering
+                at Assam University, Silchar (8.2/10).
+              </p>
+              <p>
+                At Samsung R&amp;D Institute India, Bangalore (Jan–Jul 2026) I worked in the
+                Platform Intelligence team on an AI data-generation system: an MLLM-powered
+                quality-check pipeline that scored synthetic training samples by fusing OCR
+                text, image features, vision-language and zero-shot CLIP embeddings into a
+                custom out-of-distribution score.
+              </p>
+              <p>
+                As a PG researcher in the PRISM group under Dr. Sobhan Kanti Dhara, I
+                designed GeoStatNet (IEEE SPACE 2026, accepted) and GFCR-Net (IEEE GRSL,
+                early access) for small, oriented ship detection, and co-authored SAPNet,
+                TSRNet and <em>CSPNet</em>.
+              </p>
+              <p>
+                Before that: gigapixel pathology pipelines on Upwork, a YOLOv7 PCB defect
+                detector at MNIT Jaipur, and a TensorFlow recommender at Navodita Infotech.
+              </p>
+            </div>
+
+            <dl class="facts">
+              <div><dt>Degree</dt><dd>M.Tech — Signal &amp; Image Processing</dd></div>
+              <div><dt>Institute</dt><dd>NIT Rourkela · 2024–2026</dd></div>
+              <div><dt>Focus</dt><dd>Detection, segmentation, multimodal AI</dd></div>
+              <div><dt>Recent</dt><dd>Developer Intern, Samsung R&amp;D India</dd></div>
+              <div><dt>Based</dt><dd>Hanumangarh, Rajasthan, India</dd></div>
+              <div><dt>Open to</dt><dd>Research &amp; ML engineering roles</dd></div>
+            </dl>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section id="about" class="section-pad">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-subtitle">About Me</span>
-          <h2 class="section-title">Research & Background</h2>
+    <!-- ── WORK ─────────────────────────────────────────── -->
+    <section class="section" id="work" aria-labelledby="work-title">
+      <div class="wrap section-grid">
+        <div class="rail">
+          <span class="rail-num">02</span>
+          <h2 class="rail-title" id="work-title">Selected work</h2>
+          <p class="rail-note">Twelve builds — three turned into papers, one into a hackathon finalist, the rest into tools I use.</p>
         </div>
 
-        <div class="about-grid">
-          <div class="about-bio">
-            <p>Pursuing M.Tech in Signal and Image Processing at NIT Rourkela (GPA 9.7/10), building on a B.Tech in Electronics and Communications Engineering from Assam University (GPA 8.2/10).</p>
-            <p>Completed a Software Developer Internship at Samsung R&D Institute India, Bangalore (Jan 2026 – Jul 2026), where I developed a zero-shot CLIP-based out-of-distribution (OOD) detection pipeline for live screenshot analysis.</p>
-            <p>PG Researcher at the PRISM Research Group, NIT Rourkela under Dr. Sobhan Kanti Dhara, conducting cutting-edge research in aerial image object detection and multimodal computer vision.</p>
-            <p>Co-authored publications across leading IEEE and Springer venues (including IEEE SPACE, IEEE GRSL, NCC, CVIP) and won the Best Paper Award at IEEE SPACE 2026.</p>
+        <div class="section-body">
+          <div class="filters" id="work-filters" role="group" aria-label="Filter work by area">
+            <button class="chip is-active" type="button" data-filter="All">All <span class="chip-n"></span></button>
+            <button class="chip" type="button" data-filter="CV &amp; Detection">Vision <span class="chip-n"></span></button>
+            <button class="chip" type="button" data-filter="Medical Imaging">Medical <span class="chip-n"></span></button>
+            <button class="chip" type="button" data-filter="GenAI &amp; NLP">Generative <span class="chip-n"></span></button>
+            <button class="chip" type="button" data-filter="Tools &amp; Systems">Systems <span class="chip-n"></span></button>
           </div>
 
-          <aside class="quick-facts-card">
-            <h3 class="quick-facts-title">Quick Facts</h3>
-            <div class="fact-item">
-              <span class="fact-label">Degree</span>
-              <span class="fact-value">M.Tech — Signal & Image Processing</span>
-            </div>
-            <div class="fact-item">
-              <span class="fact-label">Institute</span>
-              <span class="fact-value">NIT Rourkela</span>
-            </div>
-            <div class="fact-item">
-              <span class="fact-label">GPA</span>
-              <span class="fact-value">9.7 / 10</span>
-            </div>
-            <div class="fact-item">
-              <span class="fact-label">Recent Role</span>
-              <span class="fact-value">Software Developer Intern @ Samsung R&D</span>
-            </div>
-            <div class="fact-item">
-              <span class="fact-label">Location</span>
-              <span class="fact-value">Bangalore / Rourkela, India</span>
-            </div>
-          </aside>
+          <article class="featured" id="work-featured" aria-live="polite"></article>
+          <ol class="work-list" id="work-list"></ol>
         </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE SECTION -->
-    <section id="experience" class="section-pad">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-subtitle">Experience</span>
-          <h2 class="section-title">Where I've Worked</h2>
+    <!-- ── RESEARCH ─────────────────────────────────────── -->
+    <section class="section surface-ink" id="research" aria-labelledby="research-title">
+      <div class="wrap section-grid">
+        <div class="rail">
+          <span class="rail-num">03</span>
+          <h2 class="rail-title" id="research-title">Research</h2>
+          <p class="rail-note">Five papers with IEEE and Springer. Two accepted for 2026, three already in print.</p>
         </div>
 
-        <div class="timeline">
-          <!-- Experience Card 1 -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="experience-card">
-              <div class="exp-header">
-                <div>
-                  <h3 class="exp-role">Software Developer Intern</h3>
-                  <h4 class="exp-company">Samsung R&D Institute India</h4>
-                </div>
-                <div class="exp-meta">
-                  <span class="exp-period">Jan 2026 – Jul 2026</span>
-                  <span class="exp-location"><i class="fa-solid fa-location-dot"></i> Bangalore, India</span>
-                </div>
-              </div>
-              <ul class="exp-bullets">
-                <li>Built a zero-shot CLIP-based out-of-distribution (OOD) detection pipeline for live screenshot images, applying image processing and vision-language techniques to guide Samsung Screen AI data curation.</li>
-                <li>Extracted OCR from screenshot images, modeled text semantics with language models, and fused OCR-language and vision-language scores into a unified OOD score.</li>
-                <li>Improved computational efficiency through statistical patch/region selection, feature sparsification, and local-global image feature aggregation for real-time analysis.</li>
-              </ul>
-            </div>
-          </div>
+        <div class="section-body">
+          <ol class="papers" id="papers"></ol>
 
-          <!-- Experience Card 2 -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="experience-card">
-              <div class="exp-header">
-                <div>
-                  <h3 class="exp-role">PG Researcher (under Dr. Sobhan Kanti Dhara)</h3>
-                  <h4 class="exp-company">PRISM Research Group, NIT Rourkela</h4>
-                </div>
-                <div class="exp-meta">
-                  <span class="exp-period">Jan 2025 – Jan 2026</span>
-                  <span class="exp-location"><i class="fa-solid fa-location-dot"></i> Rourkela, India</span>
-                </div>
-              </div>
-              <ul class="exp-bullets">
-                <li>Primarily conducted research on aerial image object detection in optical satellite imagery under complex conditions.</li>
-                <li>Worked as a support researcher on tiny object detection and thermal-aerial detection tasks in multimodal settings.</li>
-                <li>Authored and architected GeoStatNet (IEEE SPACE 2026) and GFCR-Net (IEEE GRSL, under review), and co-authored SAPNet, TSRNet, and "From Pixel to People".</li>
-              </ul>
-            </div>
-          </div>
+          <h3 class="subhead">Recognition</h3>
+          <div class="awards" id="awards"></div>
+        </div>
+      </div>
+    </section>
 
-          <!-- Experience Card 3 -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="experience-card">
-              <div class="exp-header">
-                <div>
-                  <h3 class="exp-role">Freelance Deep Learning Engineer</h3>
-                  <h4 class="exp-company">Upwork</h4>
-                </div>
-                <div class="exp-meta">
-                  <span class="exp-period">Nov 2023 – Feb 2024</span>
-                  <span class="exp-location"><i class="fa-solid fa-laptop"></i> Remote</span>
-                </div>
-              </div>
-              <ul class="exp-bullets">
-                <li>Built ML pipelines for gigapixel whole-slide pathology images (SVS, ~80K–100K x 80K–100K pixels) using Multiple Instance Learning with ResNet features and attention pooling for tumor classification.</li>
-                <li>Developed a cell-level mutation detection pipeline using segmentation masks to identify mutated cells in pathology imagery.</li>
-              </ul>
-            </div>
-          </div>
+    <!-- ── EXPERIENCE ───────────────────────────────────── -->
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="wrap section-grid">
+        <div class="rail">
+          <span class="rail-num">04</span>
+          <h2 class="rail-title" id="experience-title">Experience</h2>
+          <p class="rail-note">Five roles across research, industry and freelance — 2023 to 2026.</p>
+        </div>
 
-          <!-- Experience Card 4 -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="experience-card">
-              <div class="exp-header">
-                <div>
-                  <h3 class="exp-role">Data Science Intern</h3>
-                  <h4 class="exp-company">Navodita Infotech</h4>
-                </div>
-                <div class="exp-meta">
-                  <span class="exp-period">Nov 2023 – Dec 2023</span>
-                  <span class="exp-location"><i class="fa-solid fa-location-dot"></i> India</span>
-                </div>
-              </div>
-              <ul class="exp-bullets">
-                <li>Developed a recommender system engine for an e-commerce platform using TensorFlow Recommender System.</li>
-                <li>Implemented machine learning algorithms to analyze user preferences, personalize user experience, and improve recommendation accuracy.</li>
-              </ul>
-            </div>
-          </div>
+        <div class="section-body">
+          <ol class="roles" id="roles"></ol>
+        </div>
+      </div>
+    </section>
 
-          <!-- Experience Card 5 -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="experience-card">
-              <div class="exp-header">
-                <div>
-                  <h3 class="exp-role">Computer Vision Intern</h3>
-                  <h4 class="exp-company">MNIT Jaipur</h4>
-                </div>
-                <div class="exp-meta">
-                  <span class="exp-period">Jun 2023 – Jul 2023</span>
-                  <span class="exp-location"><i class="fa-solid fa-location-dot"></i> Jaipur, India</span>
-                </div>
-              </div>
-              <ul class="exp-bullets">
-                <li>Built a proof-of-concept web application for live PCB defect detection using a deployed YOLOv7 image processing pipeline, image uploads, and real-time model inference.</li>
-                <li>Added an interactive canvas for labeling missed defects, enabling faster feedback collection and dataset updates.</li>
-              </ul>
-            </div>
+    <!-- ── TOOLKIT ──────────────────────────────────────── -->
+    <section class="section" id="toolkit" aria-labelledby="toolkit-title">
+      <div class="wrap section-grid">
+        <div class="rail">
+          <span class="rail-num">05</span>
+          <h2 class="rail-title" id="toolkit-title">Toolkit</h2>
+          <p class="rail-note">What I reach for, in the order I reach for it.</p>
+        </div>
+
+        <div class="section-body">
+          <div class="skills" id="skills"></div>
+
+          <div class="certs" id="certifications">
+            <h3 class="subhead">Certified</h3>
+            <ul id="certs-list"></ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PROJECTS SECTION -->
-    <section id="projects" class="section-pad">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-subtitle">Projects</span>
-          <h2 class="section-title">Featured Research & Projects</h2>
-          <p class="section-desc">Research implementations, computer vision models, and deep learning systems. Click any project card to view full details.</p>
-        </div>
-
-        <!-- Filter Tabs -->
-        <div class="filter-tabs" id="project-filters">
-          <button class="filter-btn active" data-category="All">All</button>
-          <button class="filter-btn" data-category="CV & Detection">CV & Detection</button>
-          <button class="filter-btn" data-category="Medical Imaging">Medical Imaging</button>
-          <button class="filter-btn" data-category="GenAI & NLP">GenAI & NLP</button>
-          <button class="filter-btn" data-category="Tools & Systems">Tools & Systems</button>
-        </div>
-
-        <!-- Projects Grid -->
-        <div class="projects-grid" id="projects-grid"></div>
-      </div>
-    </section>
-
-    <!-- PUBLICATIONS SECTION -->
-    <section id="publications" class="section-pad">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-subtitle">Publications</span>
-          <h2 class="section-title">Research Papers & Awards</h2>
-        </div>
-
-        <div class="publications-list" id="publications-list"></div>
-        
-        <h3 class="subsection-title">Awards & Honors</h3>
-        <div class="awards-grid" id="awards-grid"></div>
-      </div>
-    </section>
-
-    <!-- SKILLS SECTION -->
-    <section id="skills" class="section-pad">
-      <div class="container">
-        <div class="section-header flex-header">
+    <!-- ── CONTACT ──────────────────────────────────────── -->
+    <section class="section surface-ink contact" id="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <div class="contact-grid">
           <div>
-            <span class="section-subtitle">Technical Stack</span>
-            <h2 class="section-title">Skills & Technologies</h2>
+            <span class="rail-num">06</span>
+            <h2 class="contact-title" id="contact-title">Let's<br />talk.</h2>
+          </div>
+
+          <div class="contact-body">
+            <p class="contact-lede">
+              Research collaboration, a full-time role, or a question about a paper —
+              the inbox is open.
+            </p>
+
+            <div class="contact-actions">
+              <a class="btn btn-solid btn-lg" href="mailto:tanish.jain140301@gmail.com">
+                <svg class="icon"><use href="#i-mail" /></svg>
+                <span>tanish.jain140301@gmail.com</span>
+              </a>
+              <button class="btn btn-line btn-lg" type="button" id="copy-email" data-copy="tanish.jain140301@gmail.com">
+                <svg class="icon copy-icon"><use href="#i-copy" /></svg>
+                <svg class="icon check-icon"><use href="#i-check" /></svg>
+                <span class="copy-label">Copy</span>
+              </button>
+            </div>
+
+            <ul class="contact-links">
+              <li><a href="https://github.com/tanish1403" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-github" /></svg>github.com/tanish1403<svg class="icon ext"><use href="#i-arrow-ne" /></svg></a></li>
+              <li><a href="https://www.linkedin.com/in/tanish-jain-72332a1b2/" target="_blank" rel="noopener noreferrer"><svg class="icon"><use href="#i-linkedin" /></svg>linkedin.com/in/tanish-jain<svg class="icon ext"><use href="#i-arrow-ne" /></svg></a></li>
+            </ul>
           </div>
         </div>
 
-        <!-- Skill Filter Tabs -->
-        <div class="filter-tabs" id="skill-filters">
-          <button class="skill-filter-btn active" data-skill-cat="All">All</button>
-          <button class="skill-filter-btn" data-skill-cat="Languages">Languages</button>
-          <button class="skill-filter-btn" data-skill-cat="Deep Learning Frameworks">Deep Learning</button>
-          <button class="skill-filter-btn" data-skill-cat="CV & Imaging">CV & Imaging</button>
-          <button class="skill-filter-btn" data-skill-cat="Dev Tools & Data">Dev Tools</button>
-        </div>
-
-        <div class="skills-grid" id="skills-grid"></div>
-      </div>
-    </section>
-
-    <!-- CERTIFICATIONS SECTION -->
-    <section id="certifications" class="section-pad">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-subtitle">Certifications</span>
-          <h2 class="section-title">Certifications & Courses</h2>
-          <p class="section-desc">Verified courses and specializations completed in Deep Learning and Data Science.</p>
-        </div>
-
-        <div class="certs-grid" id="certs-grid"></div>
-      </div>
-    </section>
-
-    <!-- CONTACT SECTION -->
-    <section id="contact" class="section-pad">
-      <div class="container text-center">
-        <span class="section-subtitle">Contact</span>
-        <h2 class="section-title">Let's Connect</h2>
-        <p class="contact-desc">Whether it's a research collaboration, full-time opportunity, or technical discussion — my inbox is always open.</p>
-        
-        <div class="contact-cta-wrapper">
-          <a href="mailto:tanish.jain140301@gmail.com" class="btn btn-primary btn-large">
-            <i class="fa-solid fa-paper-plane"></i> Say Hello
-          </a>
-        </div>
-
-        <div class="footer-socials">
-          <a href="https://github.com/tanish1403" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i> GitHub</a>
-          <a href="https://www.linkedin.com/in/tanish-jain-72332a1b2/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-          <a href="mailto:tanish.jain140301@gmail.com"><i class="fa-solid fa-envelope"></i> Email</a>
-        </div>
-
-        <footer class="footer-text">
-          <p>© 2026 Tanish Jain. All rights reserved.</p>
+        <footer class="site-foot">
+          <span>© <span id="year">2026</span> Tanish Jain</span>
+          <span>Hanumangarh, Rajasthan · IST</span>
+          <span>Hand-written HTML, CSS and JS — no framework</span>
         </footer>
       </div>
     </section>
   </main>
 
-  <!-- PROJECT DETAIL MODAL -->
-  <div class="modal-backdrop" id="project-modal" aria-hidden="true">
-    <div class="modal-card">
-      <button class="modal-close" id="modal-close-btn" aria-label="Close modal">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
+  <!-- ── PROJECT DIALOG ─────────────────────────────────── -->
+  <div class="dialog" id="project-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-title" aria-hidden="true">
+    <div class="dialog-scrim" data-close></div>
 
-      <!-- Modal Header -->
-      <div class="modal-header">
-        <div class="modal-badges" id="modal-header-badges"></div>
-        <h2 class="modal-title" id="modal-title"></h2>
+    <div class="dialog-card" role="document">
+      <div class="dialog-bar">
+        <span class="dialog-index" id="dialog-index">01 / 12</span>
+        <button class="icon-btn dialog-close" type="button" data-close aria-label="Close project">
+          <svg class="icon"><use href="#i-close" /></svg>
+        </button>
       </div>
 
-      <!-- Project Photo Gallery Container -->
-      <div class="project-gallery-wrapper" id="modal-gallery-wrapper">
-        <div class="gallery-main-stage">
-          <button class="gallery-nav-btn prev" id="gallery-prev-btn" aria-label="Previous photo">
-            <i class="fa-solid fa-chevron-left"></i>
-          </button>
-          
-          <img id="gallery-main-img" src="" alt="" class="gallery-main-img" />
-          
-          <button class="gallery-nav-btn next" id="gallery-next-btn" aria-label="Next photo">
-            <i class="fa-solid fa-chevron-right"></i>
-          </button>
-
-          <div class="gallery-stage-bar">
-            <span class="gallery-counter" id="gallery-counter">
-              <i class="fa-solid fa-images"></i> <span id="gallery-curr-num">1</span> / <span id="gallery-total-num">1</span>
-            </span>
-            <button class="gallery-expand-btn" id="gallery-expand-btn" title="View Fullscreen">
-              <i class="fa-solid fa-expand"></i> Expand
+      <div class="dialog-layout">
+        <div class="dialog-media" id="dialog-media">
+          <div class="stage">
+            <img id="stage-img" src="" alt="" />
+            <button class="stage-btn prev" type="button" id="stage-prev" aria-label="Previous image">
+              <svg class="icon"><use href="#i-left" /></svg>
             </button>
+            <button class="stage-btn next" type="button" id="stage-next" aria-label="Next image">
+              <svg class="icon"><use href="#i-right" /></svg>
+            </button>
+            <div class="stage-bar">
+              <span class="stage-count"><b id="stage-now">1</b> / <span id="stage-total">1</span></span>
+              <button class="stage-expand" type="button" id="stage-expand">
+                <svg class="icon"><use href="#i-expand" /></svg><span>Expand</span>
+              </button>
+            </div>
+          </div>
+          <div class="thumbs" id="stage-thumbs"></div>
+        </div>
+
+        <div class="dialog-body" id="dialog-body">
+          <div class="dialog-head">
+            <p class="dialog-meta" id="dialog-meta"></p>
+            <h2 class="dialog-title" id="dialog-title"></h2>
+          </div>
+
+          <dl class="dialog-metrics" id="dialog-metrics"></dl>
+          <p class="dialog-desc" id="dialog-desc"></p>
+
+          <div class="dialog-foot" id="dialog-foot"></div>
+
+          <div class="dialog-block">
+            <h3>Highlights</h3>
+            <ul class="dialog-highlights" id="dialog-highlights"></ul>
+          </div>
+
+          <div class="dialog-block">
+            <h3>Stack</h3>
+            <ul class="tags" id="dialog-stack"></ul>
+          </div>
+
+          <div class="dialog-block">
+            <h3>Keywords</h3>
+            <ul class="tags tags-quiet" id="dialog-tags"></ul>
           </div>
         </div>
-
-        <div class="gallery-thumbs-container" id="gallery-thumbs"></div>
-      </div>
-
-      <div class="modal-body">
-        <div id="modal-metrics" class="modal-metrics-grid"></div>
-        <p id="modal-description" class="modal-desc"></p>
-        
-        <div class="modal-section">
-          <h3 class="modal-section-title"><i class="fa-solid fa-circle-check text-emerald"></i> Key Highlights</h3>
-          <ul id="modal-highlights" class="modal-highlights-list"></ul>
-        </div>
-
-        <div class="modal-section">
-          <h3 class="modal-section-title"><i class="fa-solid fa-bolt text-amber"></i> Tech Stack</h3>
-          <div id="modal-techstack" class="modal-tags-wrapper"></div>
-        </div>
-
-        <div class="modal-section">
-          <h3 class="modal-section-title"><i class="fa-solid fa-tags text-indigo"></i> Topics & Keywords</h3>
-          <div id="modal-tags" class="modal-tags-wrapper"></div>
-        </div>
-
-        <div class="modal-footer" id="modal-footer-links"></div>
       </div>
     </div>
   </div>
 
-  <!-- LIGHTBOX MODAL (FULLSCREEN PHOTO VIEWER) -->
-  <div class="lightbox-backdrop" id="lightbox-modal" aria-hidden="true">
-    <button class="lightbox-close" id="lightbox-close-btn" aria-label="Close Lightbox">
-      <i class="fa-solid fa-xmark"></i>
+  <!-- ── LIGHTBOX ───────────────────────────────────────── -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" aria-hidden="true">
+    <button class="icon-btn lightbox-close" type="button" id="lightbox-close" aria-label="Close viewer">
+      <svg class="icon"><use href="#i-close" /></svg>
     </button>
-    
-    <button class="lightbox-nav prev" id="lightbox-prev-btn" aria-label="Previous Image">
-      <i class="fa-solid fa-chevron-left"></i>
+    <button class="stage-btn lightbox-prev" type="button" id="lightbox-prev" aria-label="Previous image">
+      <svg class="icon"><use href="#i-left" /></svg>
     </button>
-
-    <div class="lightbox-content">
-      <img id="lightbox-img" src="" alt="Expanded View" class="lightbox-img" />
-      <div class="lightbox-caption" id="lightbox-caption"></div>
-    </div>
-
-    <button class="lightbox-nav next" id="lightbox-next-btn" aria-label="Next Image">
-      <i class="fa-solid fa-chevron-right"></i>
+    <figure class="lightbox-figure">
+      <img id="lightbox-img" src="" alt="" />
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+    <button class="stage-btn lightbox-next" type="button" id="lightbox-next" aria-label="Next image">
+      <svg class="icon"><use href="#i-right" /></svg>
     </button>
   </div>
 
-  <script src="script.js?v=5"></script>
+  <div class="row-preview" id="row-preview" aria-hidden="true"><img id="row-preview-img" src="" alt="" /></div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js?v=8"></script>
 </body>
 </html>
