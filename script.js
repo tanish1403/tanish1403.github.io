@@ -16,7 +16,7 @@ const PROJECTS = [
     category: 'CV & Detection',
     year: '2025–2026',
     status: 'Published',
-    cover: 'public/projects/ship-detection/af417654-c086-45c8-aa49-c8b1dd72aa96_page-0001.jpg',
+    cover: 'public/projects/ship-detection/cover.png',
     fit: 'contain',
     images: [
       'public/projects/ship-detection/af417654-c086-45c8-aa49-c8b1dd72aa96_page-0001.jpg',
@@ -47,7 +47,7 @@ const PROJECTS = [
     category: 'CV & Detection',
     year: '2026',
     status: 'Completed',
-    cover: 'public/projects/cad-inspection/main_TestImage_absent.jpg',
+    cover: 'public/projects/cad-inspection/main_BG_00.jpg',
     fit: 'contain',
     images: [
       'public/projects/cad-inspection/main_TestImage_absent.jpg',
@@ -80,7 +80,7 @@ const PROJECTS = [
     category: 'Medical Imaging',
     year: '2023–2024',
     status: 'Published',
-    cover: 'public/projects/liver-segmentation/Liver_Compare.png',
+    cover: 'public/projects/liver-segmentation/cover.png',
     images: [
       'public/projects/liver-segmentation/Liver_Compare.png',
       'public/projects/liver-segmentation/FlowDiagram.png',
