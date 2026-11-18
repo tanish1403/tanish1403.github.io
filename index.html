@@ -23,6 +23,7 @@
   </script>
 
   <link rel="icon" href="public/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="public/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Sans:ital,wght@0,400..700;1,400..600&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -53,13 +54,14 @@
   <header class="site-head" id="site-head">
     <div class="head-inner">
       <a class="wordmark" href="#top" aria-label="Tanish Jain — back to top">
-        Tanish Jain<span class="wordmark-mark">*</span>
+        Tanish Jain<span class="wordmark-mark" aria-hidden="true">◆</span>
       </a>
 
       <nav class="nav" id="nav" aria-label="Sections">
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#profile" class="nav-link">About</a>
         <a href="#work" class="nav-link">Work</a>
         <a href="#research" class="nav-link">Research</a>
-        <a href="#experience" class="nav-link">Experience</a>
         <a href="#toolkit" class="nav-link">Toolkit</a>
         <a href="#contact" class="nav-link">Contact</a>
       </nav>
@@ -86,7 +88,7 @@
     <section class="hero" aria-labelledby="hero-name">
       <div class="hero-grid">
         <div class="hero-copy">
-          <p class="hero-role reveal-in" style="--d: .05s">AI / ML ENGINEER · COMPUTER VISION · LLM SYSTEMS</p>
+          <p class="hero-role reveal-in" style="--d: .05s">M.TECH · SIGNAL &amp; IMAGE PROCESSING · NIT ROURKELA</p>
 
           <h1 class="hero-name" id="hero-name">
             <span class="mask"><span class="mask-inner" style="--d: .1s">Tanish</span></span>
@@ -94,7 +96,7 @@
           </h1>
 
           <p class="hero-lede reveal-in" style="--d: .38s">
-            I turn research ideas into working AI systems — spanning computer vision, multimodal models, LLM applications, retrieval and agentic developer tools.
+            I build computer-vision models and practical AI software — from oriented ship detection and multimodal data-quality pipelines to local LLM, retrieval and coding-agent tools.
           </p>
 
           <div class="hero-actions reveal-in" style="--d: .46s">
@@ -117,56 +119,49 @@
 
         <figure class="plate reveal-in" id="hero-plate" style="--d: .24s">
           <div class="plate-media">
-            <img src="public/projects/covers/ship-detection.svg" alt="Visualisation of oriented ship detection in satellite imagery" width="1120" height="760" />
-            <span class="reg-mark tl"></span>
-            <span class="reg-mark tr"></span>
-            <span class="reg-mark bl"></span>
-            <span class="reg-mark br"></span>
-
-            <div class="bbox">
-              <span class="bbox-label">VISION / DETECTION <b>01</b></span>
-            </div>
-
-            <div class="plate-cross" id="plate-cross" aria-hidden="true">
-              <span class="cross-x"></span>
-              <span class="cross-y"></span>
-            </div>
-
-            <div class="plate-readout" id="plate-readout" aria-hidden="true">
-              <span>x <b id="rd-x">000</b></span>
-              <span>y <b id="rd-y">000</b></span>
-              <span class="rd-mode">infer</span>
-            </div>
+            <img src="public/profile.jpg" alt="Portrait of Tanish Jain" width="900" height="1100" fetchpriority="high" />
           </div>
           <figcaption>AI engineering · research · systems <span class="fig-meta">NIT Rourkela</span></figcaption>
         </figure>
       </div>
 
-      <div class="hero-focus reveal-in" style="--d: .62s" aria-label="Engineering focus">
-        <span>Computer Vision</span><i></i><span>LLM Engineering</span><i></i><span>Agentic Systems</span>
+    </section>
+
+    <!-- ── EXPERIENCE ───────────────────────────────────── -->
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="wrap section-grid">
+        <div class="rail">
+          <span class="rail-num">01</span>
+          <h2 class="rail-title" id="experience-title">Experience</h2>
+          <p class="rail-note">Industry, academic research and engineering work, 2023–2026.</p>
+        </div>
+
+        <div class="section-body">
+          <ol class="roles" id="roles"></ol>
+        </div>
       </div>
     </section>
 
     <!-- ── PROFILE ──────────────────────────────────────── -->
     <section class="section" id="profile" aria-labelledby="profile-title">
       <div class="wrap section-grid">
-        <div class="rail"><span class="rail-num">01</span><h2 class="rail-title" id="profile-title">About</h2><p class="rail-note">Building intelligent systems from model architecture to usable applications.</p></div>
+        <div class="rail"><span class="rail-num">02</span><h2 class="rail-title" id="profile-title">About</h2><p class="rail-note">A research-led engineer working across visual perception and applied AI software.</p></div>
         <div class="section-body">
-          <p class="lead">AI/ML engineer with a research background in signal and image processing and hands-on experience building computer vision, multimodal and LLM-powered systems.</p>
+          <p class="lead">I am a signal-and-image-processing researcher who enjoys taking models beyond experiments — building, evaluating and engineering AI systems that solve concrete problems.</p>
           <div class="profile-cols">
             <div class="prose">
-              <p>My work spans the full applied AI workflow: understanding data, developing and adapting models, evaluating them carefully, and turning experiments into dependable tools. I have worked on visual perception and object detection, medical image segmentation, synthetic-data quality assessment, retrieval-augmented applications and local-first AI developer tools.</p>
-              <p>At Samsung R&amp;D Institute India, I worked on an MLLM-powered quality-check pipeline for synthetic training data, combining OCR, image features, vision-language representations and statistical out-of-distribution scoring.</p>
-              <p>My research at NIT Rourkela focuses on robust visual perception in challenging remote-sensing scenes, including small and oriented ship detection. Alongside research, I build practical software around model inference, evidence-grounded retrieval and human-reviewed AI agents.</p>
-              <p>I am interested in roles across AI/ML engineering, computer vision, model inference and optimization, LLM applications, fine-tuning, RAG and agentic systems.</p>
+              <p>I am pursuing an M.Tech in Signal and Image Processing at NIT Rourkela, after completing my B.Tech in Electronics and Communication Engineering from Assam University. My work sits at the intersection of computer vision, deep learning and practical AI engineering.</p>
+              <p>During my internship at Samsung R&amp;D Institute India, I worked on an MLLM-powered synthetic-data quality pipeline. I combined OCR signals, image features and vision-language embeddings, then used statistical out-of-distribution scoring to identify low-quality generated samples.</p>
+              <p>My research focuses on robust object detection in difficult remote-sensing imagery. I have developed GeoStatNet and GFCR-Net for small and oriented ship detection, and worked on 3D liver and tumour segmentation. This work has led to publications and research submissions in computer vision and remote sensing.</p>
+              <p>Outside research, I build usable AI tools: Priorscope for evidence-checked research discovery, HearthForge for reviewable local coding agents, and EdgePilot for local model inference and benchmarking. I care about measurable evaluation, reliable outputs and systems that remain useful beyond a demo.</p>
             </div>
             <dl class="facts">
-              <div><dt>Education</dt><dd>M.Tech, Signal &amp; Image Processing</dd></div>
-              <div><dt>Institute</dt><dd>NIT Rourkela</dd></div>
-              <div><dt>Experience</dt><dd>Samsung R&amp;D · AI systems</dd></div>
-              <div><dt>Core areas</dt><dd>Vision · LLMs · RAG · Agents</dd></div>
-              <div><dt>Location</dt><dd>India</dd></div>
-              <div><dt>Interests</dt><dd>Research &amp; applied engineering</dd></div>
+              <div><dt>Current degree</dt><dd>M.Tech · NIT Rourkela</dd></div>
+              <div><dt>Undergraduate</dt><dd>B.Tech · Assam University</dd></div>
+              <div><dt>Industry</dt><dd>Samsung R&amp;D Institute India</dd></div>
+              <div><dt>Research</dt><dd>Ship detection · Medical imaging</dd></div>
+              <div><dt>Engineering</dt><dd>Multimodal AI · RAG · Local inference</dd></div>
+              <div><dt>Based in</dt><dd>India</dd></div>
             </dl>
           </div>
         </div>
@@ -176,7 +171,7 @@
     <section class="section" id="work" aria-labelledby="work-title">
       <div class="wrap section-grid">
         <div class="rail">
-          <span class="rail-num">02</span>
+          <span class="rail-num">03</span>
           <h2 class="rail-title" id="work-title">Selected work</h2>
           <p class="rail-note">Selected work across vision, multimodal AI, inference engineering and LLM-powered applications.</p>
         </div>
@@ -199,7 +194,7 @@
     <section class="section surface-ink" id="research" aria-labelledby="research-title">
       <div class="wrap section-grid">
         <div class="rail">
-          <span class="rail-num">03</span>
+          <span class="rail-num">04</span>
           <h2 class="rail-title" id="research-title">Research</h2>
           <p class="rail-note">Research in robust visual perception, medical imaging and efficient deep learning.</p>
         </div>
@@ -213,20 +208,6 @@
       </div>
     </section>
 
-    <!-- ── EXPERIENCE ───────────────────────────────────── -->
-    <section class="section" id="experience" aria-labelledby="experience-title">
-      <div class="wrap section-grid">
-        <div class="rail">
-          <span class="rail-num">04</span>
-          <h2 class="rail-title" id="experience-title">Experience</h2>
-          <p class="rail-note">Five roles across research, industry and freelance — 2023 to 2026.</p>
-        </div>
-
-        <div class="section-body">
-          <ol class="roles" id="roles"></ol>
-        </div>
-      </div>
-    </section>
 
     <!-- ── TOOLKIT ──────────────────────────────────────── -->
     <section class="section" id="toolkit" aria-labelledby="toolkit-title">
