@@ -509,7 +509,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroPlate();
   renderWork('All');
   initWorkFilters();
-  initRowPreview();
   renderPapers();
   renderAwards();
   renderRoles();
@@ -655,67 +654,39 @@ function initHeroPlate() {
    WORK
    ───────────────────────────────────────────────────────────── */
 function renderWork(filter) {
-  const featured = $('#work-featured');
-  const list = $('#work-list');
+  const grid = $('#work-grid');
   const items = filter === 'All' ? PROJECTS : PROJECTS.filter((p) => p.category === filter);
 
   if (!items.length) {
-    featured.innerHTML = '';
-    list.innerHTML = '<li class="work-empty">No projects in this area yet.</li>';
+    grid.innerHTML = '<div class="work-empty">No projects in this area yet.</div>';
     return;
   }
 
-  const [lead, ...rest] = items;
-
-  const cover = coverOf(lead);
-  const media = cover
-    ? `<button class="featured-media${lead.fit ? ` is-${esc(lead.fit)}` : ''}" type="button" data-open="${esc(lead.id)}" aria-label="Open ${esc(lead.title)}">
-         <img src="${esc(cover)}" alt="${esc(lead.title)}" loading="lazy" />
-       </button>`
-    : `<div class="featured-media is-empty" aria-hidden="true">
-         <span class="plate-kicker">Fig. ${pad(PROJECTS.indexOf(lead) + 1)} — no figure on file</span>
-         <span class="plate-words">${esc(lead.title)}</span>
-         <span class="plate-foot">${esc(lead.category)}</span>
-       </div>`;
-
-  featured.innerHTML = `
-    ${media}
-    <div class="feat-body">
-      <div class="feat-meta-row">
-        <p class="feat-meta">${esc(lead.category)} · ${esc(lead.year)}</p>
-        <span class="feat-status ${statusClass(lead.status)}">${esc(lead.status)}</span>
-      </div>
-      <h3 class="feat-title">${esc(lead.title)}</h3>
-      <p class="feat-desc">${esc(lead.description)}</p>
-      <dl class="feat-metrics">
-        ${lead.metrics.map((m) => `<div><dt>${esc(m.label)}</dt><dd>${esc(m.value)}</dd></div>`).join('')}
-      </dl>
-      ${tagsMarkup(lead.techStack)}
-      <div class="feat-actions">
-        <button class="btn btn-line" type="button" data-open="${esc(lead.id)}">
-          <span>Open case study</span>
-          <svg class="icon"><use href="#i-arrow" /></svg>
-        </button>
-      </div>
-    </div>
-  `;
-
-  list.innerHTML = rest.map((p, i) => {
+  grid.innerHTML = items.map((p, i) => {
     const img = coverOf(p);
     const preview = img ? ` data-preview="${esc(img)}"` : '';
+    const isFeatured = i === 0;
 
     return `
-      <li class="work-row" data-anim style="--ad:${0.04 + i * 0.03}s">
-        <button class="work-btn" type="button" data-open="${esc(p.id)}"${preview}>
-          <span class="work-num">${pad(i + 2)}</span>
-          <span class="work-name">
-            <span class="work-title">${esc(p.title)}</span>
-            <span class="work-sub">${esc(p.techStack.slice(0, 3).join(' · '))}</span>
-          </span>
-          <span class="work-meta">${esc(p.category)} · ${esc(p.year)}</span>
-          <svg class="icon work-arrow"><use href="#i-arrow" /></svg>
-        </button>
-      </li>
+      <article class="work-card${isFeatured ? ' is-featured' : ''}" data-anim style="--ad:${i * 0.04}s">
+        <div class="work-card-media">
+          ${img ? `<img src="${esc(img)}" alt="${esc(p.title)}" loading="lazy" />` : '<span class="no-cover"></span>'}
+          <span class="work-card-status ${statusClass(p.status)}">${esc(p.status)}</span>
+        </div>
+        <div class="work-card-body">
+          <p class="work-card-meta">${esc(p.category)} · ${esc(p.year)}</p>
+          <h3 class="work-card-title">${esc(p.title)}</h3>
+          <p class="work-card-desc">${esc(p.description)}</p>
+          <dl class="work-card-metrics">
+            ${p.metrics.map((m) => `<div><dt>${esc(m.label)}</dt><dd>${esc(m.value)}</dd></div>`).join('')}
+          </dl>
+          ${tagsMarkup(p.techStack, 'work-card-tags')}
+          <button class="btn btn-line btn-sm work-card-btn" type="button" data-open="${esc(p.id)}"${preview}>
+            <span>Open case study</span>
+            <svg class="icon"><use href="#i-arrow" /></svg>
+          </button>
+        </div>
+      </article>
     `;
   }).join('');
 }
@@ -748,63 +719,6 @@ function initWorkFilters() {
     if (!opener) return;
     openProject(opener.dataset.open);
   });
-}
-
-/* Cursor-following figure preview for the work index rows. */
-function initRowPreview() {
-  const box = $('#row-preview');
-  const img = $('#row-preview-img');
-  if (!box || !img) return;
-  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-
-  let raf = 0;
-  let x = 0;
-  let y = 0;
-  let current = '';
-
-  const place = () => {
-    const pad = 28;
-    const w = box.offsetWidth || 240;
-    const h = box.offsetHeight || 180;
-    let left = x + pad;
-    if (left + w > window.innerWidth - 12) left = x - pad - w;
-    let top = y - h / 2;
-    top = Math.max(12, Math.min(top, window.innerHeight - h - 12));
-    box.style.transform = `translate(${Math.round(left)}px, ${Math.round(top)}px)`;
-  };
-
-  document.addEventListener('pointermove', (e) => {
-    const row = e.target.closest('.work-btn[data-preview]');
-    if (!row) {
-      if (current) {
-        current = '';
-        box.classList.remove('is-on');
-      }
-      return;
-    }
-
-    x = e.clientX;
-    y = e.clientY;
-    const src = row.dataset.preview;
-    if (src !== current) {
-      current = src;
-      img.src = src;
-      box.classList.add('is-on');
-    }
-    if (!raf) {
-      raf = requestAnimationFrame(() => {
-        raf = 0;
-        place();
-      });
-    }
-  }, { passive: true });
-
-  window.addEventListener('scroll', () => {
-    if (current) {
-      current = '';
-      box.classList.remove('is-on');
-    }
-  }, { passive: true });
 }
 
 /* ─────────────────────────────────────────────────────────────

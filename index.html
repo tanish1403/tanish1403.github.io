@@ -173,13 +173,12 @@
         <div class="rail">
           <span class="rail-num">01</span>
           <h2 class="rail-title" id="profile-title">Profile</h2>
-          <p class="rail-note">Computer vision and AI engineer — detection models, 3D medical segmentation, multimodal pipelines.</p>
+          <p class="rail-note">Computer vision & AI engineer — detection, segmentation, MLLM pipelines, edge tooling.</p>
         </div>
 
         <div class="section-body">
           <p class="lead">
-            Computer vision and AI engineer building end-to-end deep learning systems
-            and research-driven vision models — for images that don't cooperate.
+            I build end-to-end vision systems and AI tooling — from lightweight satellite detectors and 3D CT segmentation to MLLM quality-check pipelines and local-first developer workbenches.
           </p>
 
           <div class="profile-cols">
@@ -194,24 +193,34 @@
                 Platform Intelligence team on an AI data-generation system: an MLLM-powered
                 quality-check pipeline that scored synthetic training samples by fusing OCR
                 text, image features, vision-language and zero-shot CLIP embeddings into a
-                custom out-of-distribution score.
+                custom out-of-distribution score — replacing manual review with calibrated
+                statistical thresholds from clean data alone.
               </p>
               <p>
+                              <p>
                 As a PG researcher in the PRISM group under Dr. Sobhan Kanti Dhara, I
                 designed GeoStatNet (IEEE SPACE 2026, accepted) and GFCR-Net (IEEE GRSL,
-                early access) for small, oriented ship detection, and co-authored SAPNet,
-                TSRNet and <em>CSPNet</em>.
+                early access) for small, oriented ship detection in degraded maritime scenes,
+                and co-authored SAPNet, TSRNet and <em>CSPNet</em> for thermal tiny-human detection.
               </p>
               <p>
-                Before that: gigapixel pathology pipelines on Upwork, a YOLOv7 PCB defect
-                detector at MNIT Jaipur, and a TensorFlow recommender at Navodita Infotech.
+                              <p>
+                Earlier work spans gigapixel whole-slide pathology pipelines (Upwork),
+                real-time PCB defect detection with YOLOv7 (MNIT Jaipur), a TensorFlow
+                recommender system (Navodita Infotech), conversational fashion GenAI
+                (Flipkart Grid 5.0 finalist), and a FaceNet-based attendance system.
+              </p>              <p>
+                I also build developer tools: EdgePilot AI Studio (local-first Streamlit +
+                OpenVINO workbench), Priorscope (evidence-verified research novelty checker),
+                Hearthforge (coding agent with review gates), and a RAG query engine for
+                tabular data.
               </p>
             </div>
 
             <dl class="facts">
               <div><dt>Degree</dt><dd>M.Tech — Signal &amp; Image Processing</dd></div>
               <div><dt>Institute</dt><dd>NIT Rourkela · 2024–2026</dd></div>
-              <div><dt>Focus</dt><dd>Detection, segmentation, multimodal AI</dd></div>
+              <div><dt>Focus</dt><dd>Detection, segmentation, MLLM, edge AI</dd></div>
               <div><dt>Recent</dt><dd>Developer Intern, Samsung R&amp;D India</dd></div>
               <div><dt>Based</dt><dd>Hanumangarh, Rajasthan, India</dd></div>
               <div><dt>Open to</dt><dd>Research &amp; ML engineering roles</dd></div>
@@ -239,8 +248,7 @@
             <button class="chip" type="button" data-filter="Tools &amp; Systems">Systems <span class="chip-n"></span></button>
           </div>
 
-          <article class="featured" id="work-featured" aria-live="polite"></article>
-          <ol class="work-list" id="work-list"></ol>
+          <div class="work-grid" id="work-grid"></div>
         </div>
       </div>
     </section>
@@ -420,10 +428,8 @@
     </button>
   </div>
 
-  <div class="row-preview" id="row-preview" aria-hidden="true"><img id="row-preview-img" src="" alt="" /></div>
-
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=9"></script>
 </body>
 </html>
