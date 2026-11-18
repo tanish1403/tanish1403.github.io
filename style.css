@@ -1836,16 +1836,16 @@ p { text-wrap: pretty; }
 
 
 /* ── Portfolio refresh: AI/ML engineering positioning ── */
-.hero-focus{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font:500 11px/1.4 'DM Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.hero-focus i{width:4px;height:4px;border-radius:50%;background:var(--accent);display:inline-block}
+.hero-focus{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:34px;padding-top:20px;border-top:1px solid var(--rule);font:500 11px/1.4 'DM Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.hero-focus i{width:4px;height:4px;border-radius:50%;background:var(--signal);display:inline-block}
 .hero-lede{max-width:650px}
 .plate-media img{object-position:center 38%}
 @media(max-width:700px){.hero-focus{gap:9px;font-size:9px}.hero-focus i{width:3px;height:3px}}
 
 
 /* ── Portfolio refresh: clear AI engineering hierarchy ── */
-.hero-focus{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:34px;padding-top:20px;border-top:1px solid var(--line);font:500 11px/1.4 'DM Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.hero-focus i{width:4px;height:4px;border-radius:50%;background:var(--accent);display:inline-block}
+.hero-focus{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:34px;padding-top:20px;border-top:1px solid var(--rule);font:500 11px/1.4 'DM Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.hero-focus i{width:4px;height:4px;border-radius:50%;background:var(--signal);display:inline-block}
 .hero-lede{max-width:650px}
 .plate-media img{object-fit:cover;object-position:center;filter:saturate(.92)}
 .work-card-media{aspect-ratio:16/10;overflow:hidden;background:#081523}
