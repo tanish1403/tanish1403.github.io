@@ -1853,3 +1853,21 @@ p { text-wrap: pretty; }
 .work-card:hover .work-card-media img{transform:scale(1.035)}
 .work-card-media .work-card-status{z-index:2}
 @media(max-width:700px){.hero-focus{gap:9px;font-size:9px}.hero-focus i{width:3px;height:3px}}
+
+
+/* ── Profile-first hero and clearer section hierarchy ── */
+.wordmark-mark{font-size:.52em;color:var(--signal);vertical-align:super;margin-left:.12em}
+.plate-media img{object-fit:cover;object-position:50% 28%;filter:saturate(.96) contrast(1.01)}
+.plate-media:hover img{transform:scale(1.02)}
+.plate-media .reg-mark,.plate-media .bbox,.plate-media .plate-cross,.plate-media .plate-readout{display:none!important}
+#experience{background:var(--paper-2)}
+#experience .section-body{border-left-color:var(--signal)}
+#experience .role:first-child{border-top:2px solid var(--signal)}
+#experience .role-head{padding-block:1.45rem}
+#experience .role-title{font-size:1.16rem}
+#profile .lead{max-width:38ch}
+#profile .facts{background:color-mix(in srgb,var(--signal) 3%,transparent);padding-inline:1rem;border-radius:8px}
+@media(max-width:700px){
+  .plate-media{aspect-ratio:4/4.6;max-height:560px}
+  #profile .facts{padding-inline:.8rem}
+}
